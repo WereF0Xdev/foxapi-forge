@@ -32,17 +32,11 @@ public class FoxApiMod {
     public static final String MODID = "foxapi";
 
     public FoxApiMod() {
-        // Start of user code block mod constructor
-        // End of user code block mod constructor
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // Start of user code block mod init
-        // End of user code block mod init
     }
 
-    // Start of user code block mod methods
-    // End of user code block mod methods
     private static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, clientVersion -> true);
     private static int messageID = 0;
