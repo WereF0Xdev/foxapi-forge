@@ -10,8 +10,8 @@ public class NoDimensionsFileConfiguration {
 
     static {
         BUILDER.push("No Dimensions Settings");
-        NETHER_ENABLED = BUILDER.comment("Defines if the Nether dimension is accessible (true) or not (false).").define("Nether Enabled", false);
-        END_ENABLED = BUILDER.comment("Defines if the End dimension is accessible (true) or not (false).").define("End Enabled", false);
+        NETHER_ENABLED = BUILDER.comment("Defines if the Nether dimension is accessible (true) or not (false).").define("netherEnabled", false);
+        END_ENABLED = BUILDER.comment("Defines if the End dimension is accessible (true) or not (false).").define("endEnabled", false);
         BUILDER.pop();
 
         SPEC = BUILDER.build();
