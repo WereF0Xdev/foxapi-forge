@@ -2,6 +2,7 @@ package fox.mods.api.util;
 
 import fox.mods.api.nodimensions.configuration.NoDimensionsFileConfiguration;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -13,8 +14,9 @@ public class DimensionUtils {
         if (dimension == null) {
             return Pair.of("", "");
         }
-        String namespace = dimension.location().getNamespace();
-        String path = dimension.location().getPath();
+        ResourceLocation location = dimension.location();
+        String namespace = location.getNamespace();
+        String path = location.getPath();
         return Pair.of(namespace, path);
     }
     public static List<Pair<String, String>> getEnabledDimensions() {
