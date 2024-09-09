@@ -26,7 +26,7 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.AbstractMap;
 
-@Mod("foxapi")
+@Mod(FoxApiMod.MODID)
 public class FoxApiMod {
     public static final Logger LOGGER = LogManager.getLogger(FoxApiMod.class);
     public static final String MODID = "foxapi";
