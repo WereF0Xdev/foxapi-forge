@@ -14,7 +14,7 @@ public class DimensionUtils {
         String[] parts = dimension.split(":");
         return Pair.of(parts[0], parts[1]);
     }
-    public static List<Pair<String, String>> getEnabledDimensions() {
+    public static List<Pair<String, String>> getDisabledDimensions() {
         List<? extends String> dimensions = NoDimensionsFileConfiguration.getDimensionsDisabled();
         return dimensions.stream()
                 .map(dim -> {
