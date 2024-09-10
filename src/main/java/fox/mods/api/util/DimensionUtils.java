@@ -2,7 +2,6 @@ package fox.mods.api.util;
 
 import fox.mods.api.nodimensions.configuration.NoDimensionsFileConfiguration;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -14,18 +13,22 @@ public class DimensionUtils {
         if (dimension == null) {
             return Pair.of("", "");
         }
-        ResourceLocation location = dimension.location();
-        String namespace = location.getNamespace();
-        String path = location.getPath();
-        return Pair.of(namespace, path);
+        String[] parts = dimension.toString().split(":");
+        if (parts.length == 2) {
+            return Pair.of(parts[0], parts[1]);
+        }
+        return Pair.of("", "");
     }
-    public static List<Pair<String, String>> getEnabledDimensions() {
-        List<? extends String> dimensions = NoDimensionsFileConfiguration.getDimensionsDisabled();
-        return dimensions.stream()
-                .map(dim -> {
-                    String[] parts = dim.split(":");
-                    return Pair.of(parts[0], parts[1]);
-                })
+
+    public static List<Pair<String, String>> getDisabledDimensions() {
+        return NoDimensionsFileConfiguration.getDimensionsDisabled().stream()
+                .map(dim -> dim.split(":"))
+                .filter(parts -> parts.length == 2)
+                .map(parts -> Pair.of(parts[0], parts[1]))
                 .collect(Collectors.toList());
     }
 }
+
+
+
+
